@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UIU Talent Show</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🎭</span>
+      <span class="brand-text">UIU <span class="highlight">Talent Show</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#video" class="nav-link">Video</a></li>
+      <li><a href="#audio" class="nav-link">Audio</a></li>
+      <li><a href="#blog" class="nav-link">Blog</a></li>
+      <li><a href="#leaderboard" class="nav-link">Leaderboard</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-upload" onclick="openModal('upload-modal')"><i class="fas fa-plus"></i> Post</button>
+      <button class="btn-admin" onclick="openModal('admin-modal')"><i class="fas fa-shield-alt"></i> Admin</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-badge"><i class="fas fa-star"></i> Season 2026</p>
+      <h1 class="hero-title">Unleash Your <span class="gradient-text">Talent</span></h1>
+      <p class="hero-subtitle">Share your videos, music, and stories with the UIU community. Get recognized. Shine bright.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">128</span><span class="stat-label">Participants</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">347</span><span class="stat-label">Posts</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">1.2K</span><span class="stat-label">Votes</span></div>
+      </div>
+      <div class="hero-btns">
+        <a href="#video" class="btn-primary">Explore Talents</a>
+        <button class="btn-secondary" onclick="openModal('upload-modal')">Submit Your Entry</button>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="floating-card card1"><i class="fas fa-video"></i><span>Video</span></div>
+      <div class="floating-card card2"><i class="fas fa-music"></i><span>Audio</span></div>
+      <div class="floating-card card3"><i class="fas fa-pen-nib"></i><span>Blog</span></div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION TABS ========== -->
+  <div class="section-tabs" id="content-area">
+    <button class="tab-btn active" onclick="showTab('video')"><i class="fas fa-video"></i> Video</button>
+    <button class="tab-btn" onclick="showTab('audio')"><i class="fas fa-music"></i> Audio</button>
+    <button class="tab-btn" onclick="showTab('blog')"><i class="fas fa-pen-nib"></i> Blog</button>
+  </div>
+
+  <!-- ========== VIDEO SECTION ========== -->
+  <section id="video" class="content-section active-tab">
+    <div class="section-header">
+      <h2><i class="fas fa-video"></i> Video Entries</h2>
+      <p>Travel diaries, performances, short films and more</p>
+    </div>
+    <div class="cards-grid" id="video-grid">
+
+      <!-- Video Card 1 -->
+      <div class="media-card">
+        <div class="card-thumbnail video-thumb">
+          <video controls poster="https://picsum.photos/seed/v1/400/225">
+            <source src="#" type="video/mp4" />
+          </video>
+          <span class="cat-badge video-badge"><i class="fas fa-video"></i> Video</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">My Journey to Cox's Bazar</h3>
+          <div class="card-meta">
+            <img src="https://i.pravatar.cc/30?img=1" class="avatar" alt="avatar" />
+            <span class="author">Ayesha Rahman</span>
+            <span class="dot">•</span>
+            <span class="date">Sep 1, 2026</span>
+          </div>
+          <p class="card-desc">A beautiful travel vlog capturing the serenity of the world's longest sea beach during monsoon season.</p>
+          <div class="card-footer">
+            <div class="reactions">
+              <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>24</span></button>
+              <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>8</span></button>
+            </div>
+            <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">85</span> pts</div>
+          </div>
+          <div class="comments-panel hidden">
+            <div class="comment-list">
+              <div class="comment"><img src="https://i.pravatar.cc/24?img=3" class="c-avatar" /><div><strong>Rafi</strong><p>Stunning shots! 🌊</p></div></div>
+            </div>
+            <div class="comment-input-row">
+              <input type="text" placeholder="Add a comment..." class="comment-input" />
+              <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="media-card">
+        <div class="card-thumbnail video-thumb">
+          <video controls poster="https://picsum.photos/seed/v2/400/225">
+            <source src="#" type="video/mp4" />
+          </video>
+          <span class="cat-badge video-badge"><i class="fas fa-video"></i> Video</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Street Magic in Old Dhaka</h3>
+          <div class="card-meta">
+            <img src="https://i.pravatar.cc/30?img=5" class="avatar" alt="avatar" />
+            <span class="author">Tanvir Hossain</span>
+            <span class="dot">•</span>
+            <span class="date">Sep 2, 2026</span>
+          </div>
+          <p class="card-desc">Watch as I perform close-up card magic tricks surprising locals in the narrow lanes of Puran Dhaka.</p>
+          <div class="card-footer">
+            <div class="reactions">
+              <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>41</span></button>
+              <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>13</span></button>
+            </div>
+            <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">110</span> pts</div>
+          </div>
+          <div class="comments-panel hidden">
+            <div class="comment-list">
+              <div class="comment"><img src="https://i.pravatar.cc/24?img=7" class="c-avatar" /><div><strong>Nadia</strong><p>Amazing tricks! 🃏</p></div></div>
+            </div>
+            <div class="comment-input-row">
+              <input type="text" placeholder="Add a comment..." class="comment-input" />
+              <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Card 3 -->
+      <div class="media-card">
+        <div class="card-thumbnail video-thumb">
+          <video controls poster="https://picsum.photos/seed/v3/400/225">
+            <source src="#" type="video/mp4" />
+          </video>
+          <span class="cat-badge video-badge"><i class="fas fa-video"></i> Video</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Sundarbans: Land of Tigers</h3>
+          <div class="card-meta">
+            <img src="https://i.pravatar.cc/30?img=9" class="avatar" alt="avatar" />
+            <span class="author">Mehedi Khan</span>
+            <span class="dot">•</span>
+            <span class="date">Sep 3, 2026</span>
+          </div>
+          <p class="card-desc">A cinematic documentary short capturing the raw beauty of the Sundarbans mangrove forest.</p>
+          <div class="card-footer">
+            <div class="reactions">
+              <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>56</span></button>
+              <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>19</span></button>
+            </div>
+            <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">140</span> pts</div>
+          </div>
+          <div class="comments-panel hidden">
+            <div class="comment-list"></div>
+            <div class="comment-input-row">
+              <input type="text" placeholder="Add a comment..." class="comment-input" />
+              <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== AUDIO SECTION ========== -->
+  <section id="audio" class="content-section hidden-tab">
+    <div class="section-header">
+      <h2><i class="fas fa-music"></i> Audio Entries</h2>
+      <p>Student singers, musicians and composers</p>
+    </div>
+    <div class="cards-grid" id="audio-grid">
+
+      <!-- Audio Card 1 -->
+      <div class="media-card audio-card">
+        <div class="audio-visual">
+          <div class="audio-avatar"><img src="https://i.pravatar.cc/80?img=12" alt="singer" /></div>
+          <div class="audio-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="cat-badge audio-badge"><i class="fas fa-music"></i> Audio</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Ekla Cholo Re (Cover)</h3>
+          <div class="card-meta">
+            <img src="https://i.pravatar.cc/30?img=12" class="avatar" alt="avatar" />
+            <span class="author">Priya Sharma</span>
+            <span class="dot">•</span>
+            <span class="date">Sep 1, 2026</span>
+          </div>
+          <div class="audio-player">
+            <audio controls>
+              <source src="#" type="audio/mpeg" />
+            </audio>
+          </div>
+          <p class="card-desc">A heartfelt rendition of Tagore's classic — recorded in a home studio with acoustic guitar.</p>
+          <div class="card-footer">
+            <div class="reactions">
+              <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>62</span></button>
+              <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>21</span></button>
+            </div>
+            <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">155</span> pts</div>
+          </div>
+          <div class="comments-panel hidden">
+            <div class="comment-list">
+              <div class="comment"><img src="https://i.pravatar.cc/24?img=15" class="c-avatar" /><div><strong>Siam</strong><p>Absolutely soulful! 🎵</p></div></div>
+            </div>
+            <div class="comment-input-row">
+              <input type="text" placeholder="Add a comment..." class="comment-input" />
+              <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio Card 2 -->
+      <div class="media-card audio-card">
+        <div class="audio-visual">
+          <div class="audio-avatar"><img src="https://i.pravatar.cc/80?img=20" alt="singer" /></div>
+          <div class="audio-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="cat-badge audio-badge"><i class="fas fa-music"></i> Audio</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Original Composition - Dawn</h3>
+          <div class="card-meta">
+            <img src="https://i.pravatar.cc/30?img=20" class="avatar" alt="avatar" />
+            <span class="author">Farhan Uddin</span>
+            <span class="dot">•</span>
+            <span class="date">Sep 2, 2026</span>
+          </div>
+          <div class="audio-player">
+            <audio controls>
+              <source src="#" type="audio/mpeg" />
+            </audio>
+          </div>
+          <p class="card-desc">An original lo-fi track produced entirely on a laptop — inspired by early morning walks on campus.</p>
+          <div class="card-footer">
+            <div class="reactions">
+              <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>38</span></button>
+              <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>11</span></button>
+            </div>
+            <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">95</span> pts</div>
+          </div>
+          <div class="comments-panel hidden">
+            <div class="comment-list"></div>
+            <div class="comment-input-row">
+              <input type="text" placeholder="Add a comment..." class="comment-input" />
+              <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio Card 3 -->
+      <div class="media-card audio-card">
+        <div class="audio-visual">
+          <div class="audio-avatar"><img src="https://i.pravatar.cc/80?img=25" alt="singer" /></div>
+          <div class="audio-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="cat-badge audio-badge"><i class="fas fa-music"></i> Audio</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Amar Sonar Bangla (Flute)</h3>
+          <div class="card-meta">
+            <img src="https://i.pravatar.cc/30?img=25" class="avatar" alt="avatar" />
+            <span class="author">Sabrina Islam</span>
+            <span class="dot">•</span>
+            <span class="date">Sep 3, 2026</span>
+          </div>
+          <div class="audio-player">
+            <audio controls>
+              <source src="#" type="audio/mpeg" />
+            </audio>
+          </div>
+          <p class="card-desc">A serene flute instrumental of Bangladesh's national anthem, performed and recorded live.</p>
+          <div class="card-footer">
+            <div class="reactions">
+              <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>79</span></button>
+              <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>30</span></button>
+            </div>
+            <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">200</span> pts</div>
+          </div>
+          <div class="comments-panel hidden">
+            <div class="comment-list">
+              <div class="comment"><img src="https://i.pravatar.cc/24?img=29" class="c-avatar" /><div><strong>Kabir</strong><p>Gave me chills! 🎶</p></div></div>
+            </div>
+            <div class="comment-input-row">
+              <input type="text" placeholder="Add a comment..." class="comment-input" />
+              <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== BLOG SECTION ========== -->
+  <section id="blog" class="content-section hidden-tab">
+    <div class="section-header">
+      <h2><i class="fas fa-pen-nib"></i> Blog Entries</h2>
+      <p>Stories, essays, and photo journals from students</p>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+
+      <!-- Blog Card 1 -->
+      <div class="blog-card">
+        <div class="blog-header">
+          <img src="https://i.pravatar.cc/40?img=33" class="avatar-lg" alt="author" />
+          <div>
+            <h4 class="blog-author">Nusrat Jahan</h4>
+            <span class="blog-date"><i class="far fa-calendar"></i> Sep 1, 2026</span>
+          </div>
+          <span class="cat-badge blog-badge"><i class="fas fa-pen-nib"></i> Blog</span>
+        </div>
+        <h3 class="blog-title">A Weekend in Rangamati</h3>
+        <p class="blog-excerpt">The misty hills, crystal blue lake, and the tribal culture of Rangamati left an unforgettable mark on my soul. Here is my story...</p>
+        <div class="blog-photos">
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog1a/300/200" alt="Rangamati lake" />
+            <p class="photo-desc">Kaptai Lake at sunrise — golden reflections on still water</p>
+          </div>
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog1b/300/200" alt="Rangamati hills" />
+            <p class="photo-desc">The misty green hills surrounding the lake</p>
+          </div>
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog1c/300/200" alt="Tribal culture" />
+            <p class="photo-desc">Local artisan crafting traditional tribal jewelry</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="reactions">
+            <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>88</span></button>
+            <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>34</span></button>
+          </div>
+          <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">220</span> pts</div>
+        </div>
+        <div class="comments-panel hidden">
+          <div class="comment-list">
+            <div class="comment"><img src="https://i.pravatar.cc/24?img=35" class="c-avatar" /><div><strong>Tarek</strong><p>Beautiful writeup! 🏔️</p></div></div>
+          </div>
+          <div class="comment-input-row">
+            <input type="text" placeholder="Add a comment..." class="comment-input" />
+            <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 2 -->
+      <div class="blog-card">
+        <div class="blog-header">
+          <img src="https://i.pravatar.cc/40?img=40" class="avatar-lg" alt="author" />
+          <div>
+            <h4 class="blog-author">Omar Faruq</h4>
+            <span class="blog-date"><i class="far fa-calendar"></i> Sep 2, 2026</span>
+          </div>
+          <span class="cat-badge blog-badge"><i class="fas fa-pen-nib"></i> Blog</span>
+        </div>
+        <h3 class="blog-title">The Life of a UIU Night Owl</h3>
+        <p class="blog-excerpt">Late-night study sessions, instant noodles, and unexpected friendships — the untold story of every CS student at 3 AM...</p>
+        <div class="blog-photos">
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog2a/300/200" alt="night study" />
+            <p class="photo-desc">The library at midnight — only the dedicated remain</p>
+          </div>
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog2b/300/200" alt="campus night" />
+            <p class="photo-desc">UIU campus in the quiet hours of the night</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="reactions">
+            <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>115</span></button>
+            <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>47</span></button>
+          </div>
+          <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">275</span> pts</div>
+        </div>
+        <div class="comments-panel hidden">
+          <div class="comment-list">
+            <div class="comment"><img src="https://i.pravatar.cc/24?img=42" class="c-avatar" /><div><strong>Mim</strong><p>This is SO relatable 😂</p></div></div>
+          </div>
+          <div class="comment-input-row">
+            <input type="text" placeholder="Add a comment..." class="comment-input" />
+            <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 3 -->
+      <div class="blog-card">
+        <div class="blog-header">
+          <img src="https://i.pravatar.cc/40?img=45" class="avatar-lg" alt="author" />
+          <div>
+            <h4 class="blog-author">Zara Ahmed</h4>
+            <span class="blog-date"><i class="far fa-calendar"></i> Sep 3, 2026</span>
+          </div>
+          <span class="cat-badge blog-badge"><i class="fas fa-pen-nib"></i> Blog</span>
+        </div>
+        <h3 class="blog-title">My First Photography Exhibition</h3>
+        <p class="blog-excerpt">From clicking on a phone camera to exhibiting at a university gallery — this is how a hobby became a passion...</p>
+        <div class="blog-photos">
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog3a/300/200" alt="photography" />
+            <p class="photo-desc">First roll of film ever developed — blurry but precious</p>
+          </div>
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog3b/300/200" alt="exhibition" />
+            <p class="photo-desc">The gallery wall with 12 of my best prints</p>
+          </div>
+          <div class="blog-photo-item">
+            <img src="https://picsum.photos/seed/blog3c/300/200" alt="camera" />
+            <p class="photo-desc">My trusty DSLR that started the whole journey</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="reactions">
+            <button class="react-btn like-btn" onclick="likePost(this)"><i class="far fa-heart"></i> <span>73</span></button>
+            <button class="react-btn comment-btn" onclick="openComments(this)"><i class="far fa-comment"></i> <span>28</span></button>
+          </div>
+          <div class="points-badge"><i class="fas fa-star"></i> <span class="pts">185</span> pts</div>
+        </div>
+        <div class="comments-panel hidden">
+          <div class="comment-list"></div>
+          <div class="comment-input-row">
+            <input type="text" placeholder="Add a comment..." class="comment-input" />
+            <button class="send-btn" onclick="addComment(this)"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== LEADERBOARD ========== -->
+  <section id="leaderboard" class="leaderboard-section">
+    <div class="section-header">
+      <h2><i class="fas fa-trophy"></i> Leaderboard</h2>
+      <p>Top talent ranked by audience votes + admin points</p>
+    </div>
+
+    <div class="podium">
+      <div class="podium-item second">
+        <img src="https://i.pravatar.cc/60?img=12" class="podium-avatar" alt="2nd" />
+        <div class="podium-name">Priya Sharma</div>
+        <div class="podium-tag">Audio</div>
+        <div class="podium-block">
+          <span class="podium-rank">2nd</span>
+          <span class="podium-pts">155 pts</span>
+        </div>
+      </div>
+      <div class="podium-item first">
+        <div class="crown">👑</div>
+        <img src="https://i.pravatar.cc/70?img=45" class="podium-avatar" alt="1st" />
+        <div class="podium-name">Omar Faruq</div>
+        <div class="podium-tag">Blog</div>
+        <div class="podium-block">
+          <span class="podium-rank">1st</span>
+          <span class="podium-pts">275 pts</span>
+        </div>
+      </div>
+      <div class="podium-item third">
+        <img src="https://i.pravatar.cc/60?img=40" class="podium-avatar" alt="3rd" />
+        <div class="podium-name">Nusrat Jahan</div>
+        <div class="podium-tag">Blog</div>
+        <div class="podium-block">
+          <span class="podium-rank">3rd</span>
+          <span class="podium-pts">220 pts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="leaderboard-table-wrap">
+      <table class="leaderboard-table" id="leaderboard-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Participant</th>
+            <th>Category</th>
+            <th>Likes</th>
+            <th>Comments</th>
+            <th>Admin Pts</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rank-1">
+            <td><span class="rank-badge gold">1</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=40" class="t-avatar" /> Omar Faruq</td>
+            <td><span class="cat-pill blog-pill">Blog</span></td>
+            <td>115</td>
+            <td>47</td>
+            <td><span class="admin-pts" id="ap-omar">113</span></td>
+            <td><strong class="total-pts">275</strong></td>
+          </tr>
+          <tr class="rank-2">
+            <td><span class="rank-badge silver">2</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=12" class="t-avatar" /> Priya Sharma</td>
+            <td><span class="cat-pill audio-pill">Audio</span></td>
+            <td>62</td>
+            <td>21</td>
+            <td><span class="admin-pts" id="ap-priya">72</span></td>
+            <td><strong class="total-pts">155</strong></td>
+          </tr>
+          <tr class="rank-3">
+            <td><span class="rank-badge bronze">3</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=33" class="t-avatar" /> Nusrat Jahan</td>
+            <td><span class="cat-pill blog-pill">Blog</span></td>
+            <td>88</td>
+            <td>34</td>
+            <td><span class="admin-pts" id="ap-nusrat">98</span></td>
+            <td><strong class="total-pts">220</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">4</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=25" class="t-avatar" /> Sabrina Islam</td>
+            <td><span class="cat-pill audio-pill">Audio</span></td>
+            <td>79</td>
+            <td>30</td>
+            <td><span class="admin-pts" id="ap-sabrina">91</span></td>
+            <td><strong class="total-pts">200</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">5</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=9" class="t-avatar" /> Mehedi Khan</td>
+            <td><span class="cat-pill video-pill">Video</span></td>
+            <td>56</td>
+            <td>19</td>
+            <td><span class="admin-pts" id="ap-mehedi">65</span></td>
+            <td><strong class="total-pts">140</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">6</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=45" class="t-avatar" /> Zara Ahmed</td>
+            <td><span class="cat-pill blog-pill">Blog</span></td>
+            <td>73</td>
+            <td>28</td>
+            <td><span class="admin-pts" id="ap-zara">84</span></td>
+            <td><strong class="total-pts">185</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">7</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=5" class="t-avatar" /> Tanvir Hossain</td>
+            <td><span class="cat-pill video-pill">Video</span></td>
+            <td>41</td>
+            <td>13</td>
+            <td><span class="admin-pts" id="ap-tanvir">56</span></td>
+            <td><strong class="total-pts">110</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">8</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=20" class="t-avatar" /> Farhan Uddin</td>
+            <td><span class="cat-pill audio-pill">Audio</span></td>
+            <td>38</td>
+            <td>11</td>
+            <td><span class="admin-pts" id="ap-farhan">46</span></td>
+            <td><strong class="total-pts">95</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">9</span></td>
+            <td><img src="https://i.pravatar.cc/28?img=1" class="t-avatar" /> Ayesha Rahman</td>
+            <td><span class="cat-pill video-pill">Video</span></td>
+            <td>24</td>
+            <td>8</td>
+            <td><span class="admin-pts" id="ap-ayesha">53</span></td>
+            <td><strong class="total-pts">85</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="brand-icon">🎭</span>
+        <span class="brand-text">UIU <span class="highlight">Talent Show</span></span>
+        <p>A platform for UIU students to showcase their creativity and talent.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Quick Links</h5>
+        <a href="#video">Video</a>
+        <a href="#audio">Audio</a>
+        <a href="#blog">Blog</a>
+        <a href="#leaderboard">Leaderboard</a>
+      </div>
+      <div class="footer-links">
+        <h5>Follow Us</h5>
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 UIU Talent Show. Made with ❤️ for UIU students.</p>
+    </div>
+  </footer>
+
+  <!-- ========== UPLOAD MODAL ========== -->
+  <div class="modal-overlay hidden" id="upload-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-upload"></i> Submit Your Entry</h3>
+        <button class="modal-close" onclick="closeModal('upload-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" class="form-input" placeholder="Enter your full name" />
+        </div>
+        <div class="form-group">
+          <label>Entry Category</label>
+          <div class="category-select">
+            <button class="cat-option active" onclick="selectCat(this,'video')"><i class="fas fa-video"></i> Video</button>
+            <button class="cat-option" onclick="selectCat(this,'audio')"><i class="fas fa-music"></i> Audio</button>
+            <button class="cat-option" onclick="selectCat(this,'blog')"><i class="fas fa-pen-nib"></i> Blog</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-input" placeholder="Give your entry a title" />
+        </div>
+        <div class="form-group" id="upload-file-group">
+          <label>Upload File</label>
+          <div class="file-drop" onclick="document.getElementById('file-input').click()">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Click to upload or drag & drop</p>
+            <span>Video: MP4, MOV | Audio: MP3, WAV | Images: JPG, PNG</span>
+          </div>
+          <input type="file" id="file-input" class="hidden" multiple />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-input" rows="4" placeholder="Tell us about your entry..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitEntry()">
+          <i class="fas fa-paper-plane"></i> Submit Entry
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ADMIN MODAL ========== -->
+  <div class="modal-overlay hidden" id="admin-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-shield-alt"></i> Admin Panel</h3>
+        <button class="modal-close" onclick="closeModal('admin-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="admin-login-view">
+        <p class="admin-note">Enter admin credentials to manage points and leaderboard.</p>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-input" id="admin-user" placeholder="admin" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-input" id="admin-pass" placeholder="••••••••" />
+        </div>
+        <button class="btn-submit" onclick="adminLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
+      </div>
+      <div class="modal-body hidden" id="admin-panel-view">
+        <h4 style="margin-bottom:16px; color:var(--accent)">Assign Admin Points</h4>
+        <div class="admin-point-list" id="admin-point-list">
+          <!-- dynamically generated -->
+        </div>
+        <button class="btn-submit" style="margin-top:16px" onclick="saveAdminPoints()"><i class="fas fa-save"></i> Save & Update Leaderboard</button>
+        <button class="btn-secondary" style="margin-top:8px; width:100%" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
