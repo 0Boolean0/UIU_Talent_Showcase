@@ -1,0 +1,8 @@
+@import url('style.css');
+
+.blog-page .category-main { min-height: calc(100vh - 180px); padding: 72px 40px 48px; background: radial-gradient(circle at 82% 12%, rgba(245,158,11,.14), transparent 34%); }
+.blog-page .page-heading { max-width: 760px; margin: 0 auto 38px; text-align: center; }
+.blog-page .page-heading h1 { font-size: clamp(2.1rem, 5vw, 3.8rem); line-height: 1.1; margin: 14px 0 12px; }
+.blog-page .page-heading > p:last-child { color: var(--text2); line-height: 1.7; }
+.blog-page .content-section { padding: 0; }
+.blog-page .blog-grid { max-width: 900px; }

@@ -283,6 +283,19 @@ function toggleMenu() {
   document.body.classList.toggle('nav-open');
 }
 
+function toggleTalentMenu(event) {
+  event.stopPropagation();
+  const dropdown = event.currentTarget.closest('.nav-dropdown');
+  document.querySelectorAll('.nav-dropdown.open').forEach(item => {
+    if (item !== dropdown) item.classList.remove('open');
+  });
+  dropdown.classList.toggle('open');
+}
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => dropdown.classList.remove('open'));
+});
+
 // Close nav on link click
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
