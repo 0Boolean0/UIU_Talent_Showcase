@@ -1,9 +1,51 @@
 @import url('style.css');
-.how-page-main { min-height: calc(100vh - 180px); padding: 72px 40px 90px; background: radial-gradient(circle at 18% 8%, rgba(124,107,255,.16), transparent 35%); }
-.how-page .page-heading { max-width: 720px; margin: 0 auto 42px; text-align: center; }
-.how-page .page-heading h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); margin: 14px 0 10px; }
-.how-page .page-heading > p:last-child { color: var(--text2); line-height: 1.7; }
-.full-steps { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-.full-steps .step-card { min-height: 200px; }
-@media (max-width: 900px) { .full-steps { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .how-page-main { padding: 52px 20px 64px; } .full-steps { grid-template-columns: 1fr; } }
+
+.how-page-main {
+    min-height: calc(100vh - 180px);
+    padding: 72px 40px 90px;
+    background: radial-gradient(circle at 18% 8%, rgba(124, 107, 255, .16), transparent 35%);
+}
+
+.how-page .page-heading {
+    max-width: 720px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+.how-page .page-heading h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    margin: 14px 0 10px;
+}
+
+.how-page .page-heading>p:last-child {
+    color: var(--text2);
+    line-height: 1.7;
+}
+
+.full-steps {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+}
+
+.full-steps .step-card {
+    min-height: 200px;
+}
+
+@media (max-width: 900px) {
+    .full-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .how-page-main {
+        padding: 52px 20px 64px;
+    }
+
+    .full-steps {
+        grid-template-columns: 1fr;
+    }
+}

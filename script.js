@@ -1,31 +1,18 @@
-/* ========================================
-   UIU TALENT SHOW — SCRIPT
-   ======================================== */
 
-// ---- Tab switching ----
 function showTab(tab) {
-  // Hide all sections
   document.querySelectorAll('.content-section').forEach(s => {
     s.classList.add('hidden-tab');
     s.classList.remove('active-tab');
   });
-
-  // Show target section
   const target = document.getElementById(tab);
   if (target) {
     target.classList.remove('hidden-tab');
     target.classList.add('active-tab');
   }
-
-  // Update tab buttons
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
   event.currentTarget.classList.add('active');
-
-  // Smooth scroll to content
   document.getElementById('content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
-// ---- Like toggle ----
 function likePost(btn) {
   const countEl = btn.querySelector('span');
   let count = parseInt(countEl.textContent);
@@ -41,11 +28,9 @@ function likePost(btn) {
     createHeartParticle(btn);
   }
 }
-
-// ---- Heart particle effect ----
 function createHeartParticle(btn) {
   const particle = document.createElement('span');
-  particle.textContent = '❤️';
+  particle.textContent = 'reacted';
   particle.style.cssText = `
     position: fixed;
     pointer-events: none;
@@ -61,8 +46,6 @@ function createHeartParticle(btn) {
 
   setTimeout(() => particle.remove(), 800);
 }
-
-// Add animation to document
 const style = document.createElement('style');
 style.textContent = `
   @keyframes heartFloat {
@@ -71,8 +54,6 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
-
-// ---- Comments toggle ----
 function openComments(btn) {
   const card = btn.closest('.media-card, .blog-card');
   const panel = card.querySelector('.comments-panel');
@@ -86,8 +67,6 @@ function openComments(btn) {
     btn.querySelector('i').className = 'far fa-comment';
   }
 }
-
-// ---- Add comment ----
 function addComment(sendBtn) {
   const row = sendBtn.closest('.comment-input-row');
   const input = row.querySelector('.comment-input');
@@ -109,12 +88,10 @@ function addComment(sendBtn) {
 
   list.appendChild(commentEl);
   input.value = '';
-
-  // Update comment count
   const commentBtn = sendBtn.closest('.card-body, .blog-card').querySelector('.comment-btn span');
   if (commentBtn) commentBtn.textContent = parseInt(commentBtn.textContent) + 1;
 
-  showToast('💬 Comment posted!');
+  showToast('ðŸ’¬ Comment posted!');
 }
 
 function escapeHtml(str) {
@@ -122,8 +99,6 @@ function escapeHtml(str) {
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
-
-// ---- Modal ----
 function openModal(id) {
   const modal = document.getElementById(id);
   modal.classList.remove('hidden');
@@ -136,49 +111,37 @@ function closeModal(id) {
   document.getElementById(id).classList.add('hidden');
   document.body.style.overflow = '';
 }
-
-// Close on overlay click
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', function (e) {
     if (e.target === this) closeModal(this.id);
   });
 });
-
-// Close on Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(m => closeModal(m.id));
   }
 });
-
-// ---- Upload category selection ----
 function selectCat(btn, cat) {
   document.querySelectorAll('.cat-option').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
-
-// ---- Submit entry ----
 function submitEntry() {
   const nameInput = document.querySelector('#upload-modal .form-input');
   const name = nameInput.value.trim();
 
   if (!name) {
-    showToast('⚠️ Please enter your name', 'warn');
+    showToast('Please enter your name', 'warn');
     nameInput.focus();
     return;
   }
 
   closeModal('upload-modal');
-  showToast('🎉 Entry submitted! Awaiting review.');
-
-  // Reset form
+  showToast('ðŸŽ‰ Entry submitted! Awaiting review.');
   document.querySelectorAll('#upload-modal .form-input').forEach(i => i.value = '');
   document.querySelectorAll('#upload-modal .cat-option').forEach((b, idx) => {
     b.classList.toggle('active', idx === 0);
   });
 }
-
-// ---- Admin login ----
 const ADMIN_CREDENTIALS = { user: 'admin', pass: 'uiu2026' };
 let adminLoggedIn = false;
 
@@ -190,9 +153,9 @@ function adminLogin() {
     adminLoggedIn = true;
     document.getElementById('admin-login-view').classList.add('hidden');
     document.getElementById('admin-panel-view').classList.remove('hidden');
-    showToast('✅ Admin logged in!');
+    showToast('âœ… Admin logged in!');
   } else {
-    showToast('❌ Invalid credentials', 'error');
+    showToast('âŒ Invalid credentials', 'error');
   }
 }
 
@@ -204,8 +167,6 @@ function adminLogout() {
   document.getElementById('admin-pass').value = '';
   closeModal('admin-modal');
 }
-
-// ---- Admin leaderboard data ----
 const participants = [
   { id: 'omar', name: 'Omar Faruq', avatar: 'https://i.pravatar.cc/28?img=40', cat: 'Blog', pts: 113 },
   { id: 'priya', name: 'Priya Sharma', avatar: 'https://i.pravatar.cc/28?img=12', cat: 'Audio', pts: 72 },
@@ -241,12 +202,8 @@ function saveAdminPoints() {
     if (input) {
       const newPts = parseInt(input.value) || 0;
       p.pts = newPts;
-
-      // Update displayed admin pts in table
       const el = document.getElementById('ap-' + p.id);
       if (el) el.textContent = newPts;
-
-      // Recalculate total (likes + comments + admin pts) — approximate
       const row = el ? el.closest('tr') : null;
       if (row) {
         const cells = row.querySelectorAll('td');
@@ -260,10 +217,8 @@ function saveAdminPoints() {
   });
 
   closeModal('admin-modal');
-  showToast('🏆 Leaderboard updated!');
+  showToast('Leaderboard updated!');
 }
-
-// ---- Toast ----
 let toastTimer;
 function showToast(msg, type = 'success') {
   const toast = document.getElementById('toast');
@@ -277,8 +232,6 @@ function showToast(msg, type = 'success') {
     toast.classList.add('hidden');
   }, 3000);
 }
-
-// ---- Navbar mobile toggle ----
 function toggleMenu() {
   document.body.classList.toggle('nav-open');
 }
@@ -295,18 +248,13 @@ function toggleTalentMenu(event) {
 document.addEventListener('click', () => {
   document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => dropdown.classList.remove('open'));
 });
-
-// Close nav on link click
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     document.body.classList.remove('nav-open');
-    // Update active nav link
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     link.classList.add('active');
   });
 });
-
-// ---- Smooth active nav on scroll ----
 const sections = ['home', 'video', 'audio', 'blog', 'leaderboard'];
 
 window.addEventListener('scroll', () => {
@@ -321,8 +269,6 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-
-// ---- File drag & drop ----
 const fileDrop = document.querySelector('.file-drop');
 if (fileDrop) {
   fileDrop.addEventListener('dragover', e => {
@@ -356,8 +302,6 @@ if (fileDrop) {
     }
   });
 }
-
-// ---- Toast type colors ----
 const toastStyle = document.createElement('style');
 toastStyle.textContent = `
   .toast.type-error { border-left: 3px solid #f87171; }
@@ -365,3 +309,4 @@ toastStyle.textContent = `
   .toast.type-success { border-left: 3px solid var(--green); }
 `;
 document.head.appendChild(toastStyle);
+
